@@ -1,0 +1,21 @@
+name: Update Manifest Import Reference
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Update manifest project import reference to HEAD ref of base project
+      run: |
+        echo ${{ secrets.SPOKE_TOKEN }} > key
+        ssh-add key
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git clone git@github.com:drewgillson/my_fruit_basket.git .
+        echo "#${{ github.ref }}" >> manifest.lkml
+        git commit -m "ci: Automated build push" -a | exit 0
+        git push -u origin master
