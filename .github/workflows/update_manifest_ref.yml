@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Update manifest project import reference to HEAD ref of base project
       run: |
-        mkdir .ssh
+        mkdir ~/.ssh
         cat <<EOT | tee -a ~/.ssh/id_rsa
         ${{ secrets.PRIVATE_KEY }}
         EOT
