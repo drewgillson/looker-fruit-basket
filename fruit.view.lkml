@@ -15,8 +15,8 @@ view: fruit {
          SELECT 13, FLOOR(RAND()*(10)), 'lemon', 'oval', 'yellow', ROUND(RAND(),2) UNION ALL
          SELECT 14, FLOOR(RAND()*(10)), 'lime', 'round', 'green', ROUND(RAND(),2)
     ;;
-    #datagroup_trigger: persist
-    #indexes: ["name"]
+    datagroup_trigger: persist
+    indexes: ["name"]
   }
 
   dimension: id {

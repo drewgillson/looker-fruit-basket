@@ -2,7 +2,8 @@ include: "*.view.lkml"
 
 explore: fruit {
   from: fruit
-
+  hidden: yes
+  extension: required
   join: inventory {
     sql_on: ${fruit.jid} = ${inventory.jid} ;;
     relationship: many_to_many
