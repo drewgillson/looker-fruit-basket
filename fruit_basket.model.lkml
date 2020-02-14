@@ -7,7 +7,6 @@ datagroup: persist {
 }
 
 explore: fruit {
-  extension: required
   from: fruit
 
   join: inventory {
