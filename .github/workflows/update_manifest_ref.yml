@@ -12,6 +12,7 @@ jobs:
     - name: Update manifest project import reference to HEAD ref of base project
       run: |
         echo ${{ secrets.SPOKE_TOKEN }} > key
+        eval "$(ssh-agent -s)"
         ssh-add key
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
