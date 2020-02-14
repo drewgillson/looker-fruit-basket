@@ -27,7 +27,7 @@ jobs:
         mkdir my-fruit-basket
         cd my-fruit-basket
         git clone git@github.com:drewgillson/my_fruit_basket.git .
-        sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.yml
+        sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
         git add manifest.lkml
         git commit -m "ci: Automatically updated ref" -a | exit 0
         git push -u origin master
