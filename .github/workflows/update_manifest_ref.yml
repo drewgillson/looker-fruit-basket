@@ -11,7 +11,7 @@ jobs:
     - uses: actions/checkout@v2
     - name: Update manifest project import reference to HEAD ref of base project
       run: |
-        echo ${{ secrets.SPOKE_TOKEN }} > key
+        echo ${{ secrets.PRIVATE_KEY }} > key
         chmod 600 key
         eval "$(ssh-agent -s)"
         ssh-add key
