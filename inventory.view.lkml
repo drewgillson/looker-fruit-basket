@@ -42,7 +42,7 @@ view: inventory {
   measure: quantity {
     view_label: "Sales"
     type: sum
-    sql: ${TABLE.quantity} ;;
+    sql: ${TABLE}.quantity ;;
   }
 
   measure: amount {
