@@ -11,12 +11,16 @@ jobs:
     - uses: actions/checkout@v2
     - name: Update manifest project import reference to HEAD ref of base project
       run: |
-        cat <<EOT | tee -a key
+        cat <<EOT | tee -a ~/.ssh/id_rsa
         ${{ secrets.PRIVATE_KEY }}
         EOT
-        chmod 600 key
+        chmod 600 ~/.ssh/id_rsa
+        cat <<EOT | tee -a ~/.ssh/id_rsa.pub
+        ${{ secrets.PUBLIC_KEY }}
+        EOT
+        chmod 644 ~/.ssh/id_rsa.pub
         eval "$(ssh-agent -s)"
-        ssh-add key
+        ssh-add
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
         mkdir my-fruit-basket
