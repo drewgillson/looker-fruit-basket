@@ -1,5 +1,5 @@
 connection: "internal"
-include: "*.view.lkml"
+include: "**/*.view.lkml"
 
 datagroup: persist {
   max_cache_age: "24 hours"
