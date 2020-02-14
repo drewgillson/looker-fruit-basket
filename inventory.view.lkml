@@ -42,19 +42,19 @@ view: inventory {
   measure: quantity {
     view_label: "Sales"
     type: sum
-    sql: ${TABLE}.quantity ;;
+    sql: ${sales.quantity} ;;
   }
 
   measure: amount {
     view_label: "Sales"
     type: sum
-    sql: ${TABLE}.price ;;
+    sql: ${fruit.price} ;;
     value_format: "$#,##0.00"
   }
 
   measure: items {
     view_label: "Sales"
     type: count_distinct
-    sql: ${TABLE}.jid ;;
+    sql: ${sales.jid} ;;
   }
 }
