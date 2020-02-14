@@ -8,7 +8,6 @@ datagroup: persist {
 
 explore: fruit {
   extension: required
-  hidden: yes
   from: fruit
 
   join: inventory {
