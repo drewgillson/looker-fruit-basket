@@ -40,11 +40,13 @@ view: inventory {
   }
 
   measure: quantity {
+    view_label: "Sales"
     type: sum
     sql: ${TABLE}.quantity ;;
   }
 
   measure: amount {
+    view_label: "Sales"
     type: sum
     sql: ${TABLE}.price ;;
     value_format: "$#,##0.00"
