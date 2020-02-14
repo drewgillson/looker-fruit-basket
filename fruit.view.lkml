@@ -45,5 +45,4 @@ view: fruit {
     sql: ${TABLE}.price ;;
     value_format: "$#,##0.00"
   }
-
 }

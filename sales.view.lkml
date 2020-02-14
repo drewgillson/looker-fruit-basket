@@ -56,16 +56,4 @@ view: sales {
     label: "Province/State"
     sql: ${TABLE}.prov_state ;;
   }
-
-  measure: amount {
-    type: sum
-    sql: ${fruit.price} ;;
-    value_format: "$#,##0.00"
-  }
-
-  measure: items {
-    type: count_distinct
-    sql: ${fruit.jid} ;;
-  }
-
 }

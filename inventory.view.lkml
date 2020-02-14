@@ -41,4 +41,16 @@ view: inventory {
     type: sum
     sql: ${TABLE}.quantity ;;
   }
+
+  measure: amount {
+    type: sum
+    sql: ${TABLE}.price ;;
+    value_format: "$#,##0.00"
+  }
+
+  measure: items {
+    view_label: "Sales"
+    type: count_distinct
+    sql: ${TABLE}.jid ;;
+  }
 }
