@@ -17,7 +17,9 @@ view: inventory {
           SELECT 15, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C' UNION ALL
           SELECT 16, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C' UNION ALL
           SELECT 17, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C' UNION ALL
-          SELECT 18, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C'
+          SELECT 18, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C' UNION ALL
+          SELECT 19, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C' UNION ALL
+          SELECT 20, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C'
     ;;
     persist_for: "24 hours"
     indexes: ["shelf"]
