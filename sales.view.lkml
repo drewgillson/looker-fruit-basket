@@ -29,7 +29,7 @@ view: sales {
          SELECT 27, NOW() - INTERVAL FLOOR(RAND() * 5) DAY, FLOOR(RAND()*(10)), 'Shingi', 'California' UNION ALL
          SELECT 28, NOW() - INTERVAL FLOOR(RAND() * 5) DAY, FLOOR(RAND()*(10)), 'Prasad', 'California'
     ;;
-    datagroup_trigger: persist
+    persist_for: "24 hours"
     indexes: ["provstate"]
   }
 

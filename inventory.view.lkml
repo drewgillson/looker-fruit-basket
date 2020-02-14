@@ -19,7 +19,7 @@ view: inventory {
           SELECT 17, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C' UNION ALL
           SELECT 18, FLOOR(RAND()*(10)), FLOOR(RAND()*(50)), 'C'
     ;;
-    datagroup_trigger: persist
+    persist_for: "24 hours"
     indexes: ["shelf"]
   }
 
