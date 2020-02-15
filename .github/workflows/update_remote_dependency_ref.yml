@@ -45,5 +45,8 @@ jobs:
             git add manifest.lkml
             git commit -m "ci: Automatically set remote_dependency ref to most recent commit" -a | exit 0
             git push -u origin master
+          else
+            echo "$row/manifest.lkml is not configured to automatically track the hub"
+            exit 1
           fi
         done
