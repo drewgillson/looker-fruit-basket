@@ -1,16 +1,25 @@
-name: Update Manifest Import Reference
+# Set the value of the SPOKE_REPOSITORIES secret to a newline-delimited list of repositories you want to receive ref updates.
+# Note that manifest.lkml will only be updated if this line is present in the file: #automatically_track_head: yes
 
-on: [push]
+# Example value for SPOKE_REPOSITORIES (don't include the preceding # characters):
+# git@github.com:drewgillson/my_fruit_basket.git
+# git@github.com:drewgillson/your_fruit_basket.git
+
+name: Update Remote Dependency Ref in Spoke Projects
+
+on:
+  push:
+    branches:    
+    - 'master'  
 
 jobs:
-  build:
+  start:
 
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v2
-    - name: Update manifest project import reference to HEAD ref of base project
-      continue-on-error: true
+    - name: Update remote dependency ref in spoke projects to the most recent commit in this hub project
       run: |
         mkdir ~/.ssh
         cat <<EOT | tee -a ~/.ssh/${{ secrets.KEY_NAME }}
@@ -25,7 +34,7 @@ jobs:
         ssh-add
         git config --global user.email "action@github.com"
         git config --global user.name "${{ github.actor }} via GitHub Actions"
-        echo "${{ secrets.SPOKE_REPOS }}" | while read row
+        echo "${{ secrets.SPOKE_REPOSITORIES }}" | while read row
         do
           dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
           mkdir /home/runner/$dir
