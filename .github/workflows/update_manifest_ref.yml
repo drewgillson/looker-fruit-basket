@@ -35,6 +35,7 @@ jobs:
           cat ../repo
           echo "Attempting to clone $row"
           git clone $row .
+          ls -ltr
           if grep -q "automatically_track_head: yes" "manifest.lkml"; then
             cat manifest.lkml
             sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
