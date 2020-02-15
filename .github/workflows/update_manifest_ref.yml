@@ -24,10 +24,10 @@ jobs:
         ssh-add
         git config --global user.email "action@github.com"
         git config --global user.name "${{ github.actor }} via GitHub Actions"
-        echo "${{ secrets.SPOKE_REPOS }}" | jq
-        #echo '${{ secrets.SPOKE_REPOS }}' | jq -r '.[] | .repo' | while read row
-        #do
-        #  dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
+        echo "${{ secrets.SPOKE_REPOS }}" | while read row
+        do
+          dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
+          echo $dir
         #  mkdir $dir
         #  cd $dir
         #  git $row .
@@ -35,4 +35,4 @@ jobs:
         #  git add manifest.lkml
         #  git commit -m "ci: Automatically updated ref" -a | exit 0
         #  git push -u origin master
-        #done
+        done
