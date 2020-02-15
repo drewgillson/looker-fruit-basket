@@ -24,6 +24,7 @@ jobs:
         ssh-add
         git config --global user.email "action@github.com"
         git config --global user.name "${{ github.actor }} via GitHub Actions"
+        echo "${{ secrets.SPOKE_REPOS }}" | jq
         echo '${{ secrets.SPOKE_REPOS }}' | jq -r '.[] | .repo' | while read row
         do
           dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
