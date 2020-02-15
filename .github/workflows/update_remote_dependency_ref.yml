@@ -19,7 +19,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Update remote dependency ref in spoke projects to the most recent commit in this hub project
+    - name: Set remote dependency ref value in spoke projects to the most recent commit SHA in this hub project
       run: |
         mkdir ~/.ssh
         cat <<EOT | tee -a ~/.ssh/${{ secrets.KEY_NAME }}
