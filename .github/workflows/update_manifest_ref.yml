@@ -31,8 +31,8 @@ jobs:
           mkdir /home/runner/$dir
           cd /home/runner/$dir
           pwd
-          echo $row > repo
-          cat repo
+          echo $row > ../repo
+          cat ../repo
           echo "Attempting to clone $row"
           git clone $row .
           if grep -q "automatically_track_head: yes" "manifest.lkml"; then
