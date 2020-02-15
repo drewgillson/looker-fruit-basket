@@ -27,12 +27,13 @@ jobs:
         echo "${{ secrets.SPOKE_REPOS }}" | while read row
         do
           dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
-          echo $dir
-        #  mkdir $dir
-        #  cd $dir
-        #  git $row .
-        #  sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
-        #  git add manifest.lkml
-        #  git commit -m "ci: Automatically updated ref" -a | exit 0
-        #  git push -u origin master
+          mkdir $dir
+          cd $dir
+          git clone $row .
+          if grep -q "automatically_track_head: yes" "manifest.lkml"; then
+            sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
+            git add manifest.lkml
+            git commit -m "ci: Automatically set remote_dependency ref to newest commit" -a | exit 0
+            git push -u origin master
+          fi
         done
