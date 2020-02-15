@@ -40,7 +40,7 @@ jobs:
           mkdir /home/runner/$dir
           cd /home/runner/$dir
           git clone $row .
-          if grep -q "automatically_track_head: yes" "manifest.lkml"; then
+          if grep -q "automatically_track_hub: yes" "manifest.lkml"; then
             sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
             git add manifest.lkml
             git commit -m "ci: Automatically set remote_dependency ref to most recent commit" -a | exit 0
