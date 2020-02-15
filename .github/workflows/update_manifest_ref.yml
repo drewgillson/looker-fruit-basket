@@ -24,15 +24,15 @@ jobs:
         ssh-add
         git config --global user.email "action@github.com"
         git config --global user.name "${{ github.actor }} via GitHub Actions"
-        echo '${{ secrets.SPOKE_REPOS }}' | jq
-        echo '${{ secrets.SPOKE_REPOS }}' | jq -r '.[] | .repo' | while read row
-        do
-          dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
-          mkdir $dir
-          cd $dir
-          git $row .
-          sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
-          git add manifest.lkml
-          git commit -m "ci: Automatically updated ref" -a | exit 0
-          git push -u origin master
-        done
+        echo "${{ secrets.SPOKE_REPOS }}" | jq
+        #echo '${{ secrets.SPOKE_REPOS }}' | jq -r '.[] | .repo' | while read row
+        #do
+        #  dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
+        #  mkdir $dir
+        #  cd $dir
+        #  git $row .
+        #  sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
+        #  git add manifest.lkml
+        #  git commit -m "ci: Automatically updated ref" -a | exit 0
+        #  git push -u origin master
+        #done
