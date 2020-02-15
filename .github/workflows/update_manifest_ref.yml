@@ -10,6 +10,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Update manifest project import reference to HEAD ref of base project
+      continue-on-error: true
       run: |
         mkdir ~/.ssh
         cat <<EOT | tee -a ~/.ssh/${{ secrets.KEY_NAME }}
@@ -29,6 +30,7 @@ jobs:
           dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
           mkdir $dir
           cd $dir
+          echo "Attempting to clone $row"
           git clone $row .
           if grep -q "automatically_track_head: yes" "manifest.lkml"; then
             sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
