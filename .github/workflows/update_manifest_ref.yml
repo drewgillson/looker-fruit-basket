@@ -30,12 +30,8 @@ jobs:
           dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
           mkdir /home/runner/$dir
           cd /home/runner/$dir
-          pwd
-          echo $row > ../repo
-          cat ../repo
-          echo "Attempting to clone $row"
           git clone $row .
-          ls -ltr
+          grep "automatically_track_head: yes" "manifest.lkml"
           if grep -q "automatically_track_head: yes" "manifest.lkml"; then
             cat manifest.lkml
             sed -i -E 's/ref: "(.*)"/ref: "${{ github.sha }}"/g' manifest.lkml
