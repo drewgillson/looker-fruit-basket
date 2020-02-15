@@ -28,8 +28,8 @@ jobs:
         echo "${{ secrets.SPOKE_REPOS }}" | while read row
         do
           dir=`echo $row | sed 's/.\{4\}$//' | sed 's/.*\///'`
-          mkdir $dir
-          cd $dir
+          mkdir /home/runner/$dir
+          cd /home/runner/$dir
           echo "Attempting to clone $row"
           git clone $row .
           if grep -q "automatically_track_head: yes" "manifest.lkml"; then
