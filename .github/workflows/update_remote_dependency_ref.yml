@@ -3,7 +3,7 @@
 
 # Example value for SPOKE_REPOSITORIES (don't include the preceding # characters):
 # git@github.com:drewgillson/my_fruit_basket.git
-# git@github.com:drewgillson/your_fruit_basket.git
+# git@github.com:drewgillson/your_fruit_basket.git 
 
 name: Update Remote Dependency Ref in Spoke Projects
 
